@@ -1,4 +1,4 @@
-name: Hello World!
+name: Hello World WorkFlow
 
 on:
   push:
@@ -6,9 +6,11 @@ on:
       - main
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-20.04
+  say_hello:
+    runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
+      - name: Checkout repository
+        uses: actions.checkout@v3
+
+      - name: Hello World Step
+        run: echo "Hello World!"
