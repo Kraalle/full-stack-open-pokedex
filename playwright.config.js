@@ -74,5 +74,6 @@ module.exports = defineConfig({
     command: "npm run start:ci",
     port: 8080,
     timeout: 10000,
+    reuseExistingServer: true,
   },
 });
