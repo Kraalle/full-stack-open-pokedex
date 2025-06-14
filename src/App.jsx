@@ -39,6 +39,10 @@ const App = () => {
     next = pokemonList.find(({ id }) => id === pokemonId + 1);
   }
 
+  const unusedFunction = () => {
+    return 1
+  }
+
   return (
     <Routes>
       <Route
