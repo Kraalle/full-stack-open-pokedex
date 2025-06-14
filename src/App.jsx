@@ -43,6 +43,8 @@ const App = () => {
     return 1
   }
 
+  unusedFunction();
+
   return (
     <Routes>
       <Route
