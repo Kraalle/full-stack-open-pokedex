@@ -13,7 +13,7 @@ env:
 
 jobs:
   simple_deployment_pipeline:
-    if: ${{ github.event_name == 'push' && SKIP_DEPLOY_AND_TAG != 'true'}}
+    if: ${{ github.event_name == 'push' && env.SKIP_DEPLOY_AND_TAG != 'true'}}
     runs-on: ubuntu-latest
     concurrency: deploy-group
     steps:
@@ -46,7 +46,7 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
   tag_release:
-    if: ${{ github.event_name == 'push' && SKIP_DEPLOY_AND_TAG != 'true' }}
+    if: ${{ github.event_name == 'push' && env.SKIP_DEPLOY_AND_TAG != 'true' }}
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
     permissions:
