@@ -10,6 +10,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     concurrency: deploy-group
     steps:
