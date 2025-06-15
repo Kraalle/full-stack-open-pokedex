@@ -40,6 +40,23 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Notify Discord
+        if: ${{ success() }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"content":"Deployment succeeded on main!"}' \
+               ${{ secrets.DISCORD_WEBHOOK }}
+      
+      - name: Notify Discord on failure
+        if: ${{ failure() }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"content": "Deployment Failed!"}' \
+               ${{ secrets.DISCORD_WEBHOOK }}
+               
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
